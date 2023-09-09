@@ -1,4 +1,4 @@
-package linkedlist.implementation;
+package linkedlist.implementation.singly_linkedlist;
 
 public class LinkedListSelf {
     private Node head;
@@ -113,5 +113,26 @@ public class LinkedListSelf {
         Node temp = traverse(index);
         temp.next = temp.next.next;
         size--;
+    }
+
+
+
+
+
+
+    public void insertUsingRecursion(int index, int value) {
+        Node temp = head;
+        insertUsingRecursionInner(index, value, temp);
+
+    }
+
+    private Node insertUsingRecursionInner(int index, int value, Node node) {
+        if (index == 1) {
+            Node temp = new Node(value);
+            size++;
+            return temp;
+        }
+        node.next = insertUsingRecursionInner(index--, value, head.next);
+        return node;
     }
 }
